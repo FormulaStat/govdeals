@@ -29,7 +29,7 @@ header p {
 }
 
 /* Navigation */
-/* ===== Desktop Navigation Styling ===== */
+/* ===== Desktop Navigation ===== */
 nav {
   background: #003366;
   display: flex;
@@ -37,7 +37,6 @@ nav {
   align-items: center;
   padding: 15px 0;
 }
-
 nav a {
   color: #fff;
   text-decoration: none;
@@ -46,33 +45,20 @@ nav a {
   font-size: 1rem;
   transition: color 0.3s ease;
 }
-
 nav a:hover {
-  color: #ffcc00; /* gold accent on hover */
+  color: #ffcc00;
 }
 
-/* ===== Mobile Navigation Styling ===== */
-@media (max-width: 768px) {
-  nav {
-    flex-direction: column;
-    align-items: flex-start;
-    max-height: 0;              /* collapsed by default */
-    overflow: hidden;
-    transition: max-height 0.4s ease-out;
-    background: #003366;
-    width: 100%;
-  }
-  nav a {
-    display: block;
-    margin: 10px 20px;
-    color: #fff;
-  }
-  nav.open {
-    max-height: 300px;          /* expand smoothly */
-    transition: max-height 0.4s ease-in;
-  }
+/* Toggle button hidden on desktop */
+.nav-toggle {
+  display: none;
+}
 
-  /* Toggle button styling */
+/* ===== Mobile Navigation ===== */
+@media (max-width: 768px) {
+  header {
+    position: relative;
+  }
   .nav-toggle {
     display: block;
     position: absolute;
@@ -86,6 +72,23 @@ nav a:hover {
     cursor: pointer;
     border-radius: 4px;
     font-weight: 700;
+  }
+  nav {
+    flex-direction: column;
+    align-items: flex-start;
+    max-height: 0;              /* collapsed by default */
+    overflow: hidden;
+    transition: max-height 0.4s ease;
+    background: #003366;
+    width: 100%;
+  }
+  nav.open {
+    max-height: 300px;          /* expand smoothly */
+  }
+  nav a {
+    display: block;
+    margin: 10px 20px;
+    color: #fff;
   }
 }
 
