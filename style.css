@@ -29,22 +29,7 @@ header p {
 }
 
 /* Navigation */
-nav {
-  background: #003366;
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  padding: 10px;
-}
-nav a {
-  color: #fff;
-  text-decoration: none;
-  margin: 0 15px;
-  font-weight: 600;
-}
-nav a:hover {
-  text-decoration: underline;
-}
+
 /* Toggle button */
 .nav-toggle {
   display: none;
