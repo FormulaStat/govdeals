@@ -59,6 +59,7 @@ nav a:hover {
   header {
     position: relative;
   }
+
   .nav-toggle {
     display: block;
     position: absolute;
@@ -74,22 +75,33 @@ nav a:hover {
     font-weight: 700;
     z-index: 1000;
   }
+
   nav {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background: #003366;
     flex-direction: column;
     align-items: flex-start;
-    max-height: 0;
-    overflow: hidden;
-    transition: max-height 0.4s ease;
-    background: #003366;
-    width: 100%;
+    padding: 10px 0;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+    transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s ease;
   }
+
   nav.open {
-    max-height: 300px;
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
   }
+
   nav a {
     display: block;
     margin: 10px 20px;
     color: #fff;
+    font-weight: 600;
   }
 }
 
