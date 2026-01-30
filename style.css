@@ -45,7 +45,35 @@ nav a {
 nav a:hover {
   text-decoration: underline;
 }
+/* Toggle button */
+.nav-toggle {
+  display: none;
+  background: #004080;
+  color: #fff;
+  border: none;
+  padding: 10px 15px;
+  font-size: 1rem;
+  cursor: pointer;
+}
 
+/* Mobile styles */
+@media (max-width: 768px) {
+  nav {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  nav a {
+    display: none; /* hide links by default */
+    margin: 8px 0;
+  }
+  nav.open a {
+    display: block; /* show links when nav has .open */
+  }
+  .nav-toggle {
+    display: block; /* show toggle button on mobile */
+    margin-bottom: 10px;
+  }
+}
 /* Hero Section */
 .hero {
   background: url('truck-banner.jpg') no-repeat center center/cover;
