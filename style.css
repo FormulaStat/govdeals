@@ -29,7 +29,7 @@ header p {
 }
 
 /* Navigation */
-/* ===== Desktop Navigation ===== */
+/* Desktop Navigation */
 nav {
   background: #003366;
   display: flex;
@@ -49,12 +49,12 @@ nav a:hover {
   color: #ffcc00;
 }
 
-/* Toggle button hidden on desktop */
+/* Hide toggle on desktop */
 .nav-toggle {
   display: none;
 }
 
-/* ===== Mobile Navigation ===== */
+/* Mobile Navigation */
 @media (max-width: 768px) {
   header {
     position: relative;
@@ -72,18 +72,19 @@ nav a:hover {
     cursor: pointer;
     border-radius: 4px;
     font-weight: 700;
+    z-index: 1000;
   }
   nav {
     flex-direction: column;
     align-items: flex-start;
-    max-height: 0;              /* collapsed by default */
+    max-height: 0;
     overflow: hidden;
     transition: max-height 0.4s ease;
     background: #003366;
     width: 100%;
   }
   nav.open {
-    max-height: 300px;          /* expand smoothly */
+    max-height: 300px;
   }
   nav a {
     display: block;
