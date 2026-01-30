@@ -1,0 +1,81 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 0; padding: 0;
+  background: #f9f9f9;
+  color: #333;
+}
+header {
+  background: #004080;
+  color: #fff;
+  padding: 20px;
+  text-align: center;
+}
+nav {
+  background: #003366;
+  display: flex;
+  justify-content: center;
+  padding: 10px;
+}
+nav a {
+  color: #fff;
+  text-decoration: none;
+  margin: 0 15px;
+  font-weight: bold;
+}
+nav a:hover { text-decoration: underline; }
+.hero {
+  background: url('truck-banner.jpg') no-repeat center center/cover;
+  height: 300px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-size: 2em;
+  font-weight: bold;
+  text-shadow: 2px 2px 4px #000;
+}
+section {
+  padding: 40px 20px;
+  max-width: 1000px;
+  margin: auto;
+}
+h2 {
+  color: #004080;
+  margin-bottom: 20px;
+}
+.services ul {
+  list-style: none;
+  padding: 0;
+}
+.services li {
+  background: #e6f0ff;
+  margin: 10px 0;
+  padding: 15px;
+  border-left: 5px solid #004080;
+}
+.contact-info {
+  background: #f0f0f0;
+  padding: 20px;
+  border-radius: 8px;
+}
+form input, form textarea, form button {
+  width: 100%;
+  padding: 10px;
+  margin-top: 5px;
+}
+form button {
+  background: #004080;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+}
+form button:hover {
+  background: #003366;
+}
+footer {
+  background: #003366;
+  color: #fff;
+  text-align: center;
+  padding: 15px;
+  margin-top: 40px;
+}
