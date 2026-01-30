@@ -18,12 +18,7 @@ document.addEventListener("DOMContentLoaded", () => {
 // ====== Mobile Navigation Toggle ======
 document.addEventListener("DOMContentLoaded", () => {
   const nav = document.querySelector("nav");
-  const toggleBtn = document.createElement("button");
-  toggleBtn.textContent = "☰ Menu";
-  toggleBtn.classList.add("nav-toggle");
-
-  // Insert toggle button before nav links
-  nav.insertBefore(toggleBtn, nav.firstChild);
+  const toggleBtn = document.querySelector(".nav-toggle");
 
   toggleBtn.addEventListener("click", () => {
     nav.classList.toggle("open");
