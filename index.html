@@ -4,15 +4,22 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Govdeals Service | Truck Dealership</title>
+  <!-- Google Fonts for branding -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
+  <!-- Header with logo -->
   <header>
+    <div class="logo">
+      <img src="logo.png" alt="Govdeals Service Logo">
+    </div>
     <h1>Govdeals Service</h1>
     <p>Trusted Truck Sales & Rental Services Nationwide</p>
   </header>
 
+  <!-- Navigation -->
   <nav>
     <a href="#about">About</a>
     <a href="#services">Services</a>
@@ -20,14 +27,21 @@
     <a href="#contact">Contact</a>
   </nav>
 
-  <div class="hero">
-    Affordable • Verified • Fast Delivery
-  </div>
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-text">
+      <h2>Affordable • Verified • Fast Delivery</h2>
+      <a href="#inventory" class="cta-button">Browse Trucks</a>
+      <a href="#contact" class="cta-button">Get in Touch</a>
+    </div>
+  </section>
 
+  <!-- About Section -->
   <section id="about">
     <h2>About Us</h2>
     <p><strong>Username:</strong> @GovdealsTrucks</p>
     <p>Affordable prices, verified vehicles, fast delivery, and nationwide availability.</p>
+    <div class="contact-info">
       <p><strong>Phone:</strong> +1 432 675 5543</p>
       <p><strong>WhatsApp:</strong> <a href="https://wa.me/14326755543">Chat with us</a></p>
       <p><strong>Email:</strong> <a href="mailto:info@govdeals.com">info@govdeals.com</a></p>
@@ -35,7 +49,8 @@
     </div>
   </section>
 
-  <section id="services" class="services">
+  <!-- Services Section -->
+  <section id="services">
     <h2>Our Services</h2>
     <ul>
       <li>Truck Rentals (Short & Long-Term)</li>
@@ -45,12 +60,14 @@
     </ul>
   </section>
 
+  <!-- Inventory Section -->
   <section id="inventory">
     <h2>Inventory</h2>
     <p>Browse our selection of new and used trucks. Filter by model, year, and price range.</p>
-    <!-- Future dynamic listings go here -->
+    <!-- Truck cards will go here -->
   </section>
 
+  <!-- Contact Section -->
   <section id="contact">
     <h2>Contact Us</h2>
     <form id="contactForm">
@@ -65,6 +82,7 @@
     <p id="formStatus"></p>
   </section>
 
+  <!-- Footer -->
   <footer>
     <p>&copy; 2026 Govdeals Service | All Rights Reserved</p>
   </footer>
