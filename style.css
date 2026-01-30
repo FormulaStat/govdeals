@@ -1,39 +1,85 @@
+/* Global Styles */
 body {
-  font-family: Arial, sans-serif;
-  margin: 0; padding: 0;
+  font-family: 'Montserrat', Arial, sans-serif;
+  margin: 0;
+  padding: 0;
   background: #f9f9f9;
   color: #333;
 }
+
+/* Header */
 header {
   background: #004080;
   color: #fff;
-  padding: 20px;
   text-align: center;
+  padding: 20px;
 }
+header .logo img {
+  max-height: 60px;
+  margin-bottom: 10px;
+}
+header h1 {
+  margin: 0;
+  font-size: 2rem;
+  font-weight: 700;
+}
+header p {
+  margin: 5px 0 0;
+  font-size: 1.1rem;
+}
+
+/* Navigation */
 nav {
   background: #003366;
   display: flex;
   justify-content: center;
+  flex-wrap: wrap;
   padding: 10px;
 }
 nav a {
   color: #fff;
   text-decoration: none;
   margin: 0 15px;
-  font-weight: bold;
+  font-weight: 600;
 }
-nav a:hover { text-decoration: underline; }
+nav a:hover {
+  text-decoration: underline;
+}
+
+/* Hero Section */
 .hero {
   background: url('truck-banner.jpg') no-repeat center center/cover;
-  height: 300px;
+  height: 400px;
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #fff;
-  font-size: 2em;
-  font-weight: bold;
-  text-shadow: 2px 2px 4px #000;
+  text-align: center;
 }
+.hero-text {
+  background: rgba(0,0,0,0.5);
+  padding: 20px;
+  border-radius: 8px;
+}
+.hero-text h2 {
+  color: #fff;
+  font-size: 2rem;
+  margin-bottom: 20px;
+}
+.cta-button {
+  display: inline-block;
+  background: #ffcc00;
+  color: #004080;
+  padding: 10px 20px;
+  margin: 5px;
+  border-radius: 4px;
+  text-decoration: none;
+  font-weight: 700;
+}
+.cta-button:hover {
+  background: #e6b800;
+}
+
+/* Sections */
 section {
   padding: 40px 20px;
   max-width: 1000px;
@@ -42,40 +88,69 @@ section {
 h2 {
   color: #004080;
   margin-bottom: 20px;
+  font-size: 1.8rem;
 }
-.services ul {
+
+/* Services */
+#services ul {
   list-style: none;
   padding: 0;
 }
-.services li {
+#services li {
   background: #e6f0ff;
   margin: 10px 0;
   padding: 15px;
   border-left: 5px solid #004080;
+  font-weight: 500;
 }
+
+/* Contact Info */
 .contact-info {
   background: #f0f0f0;
   padding: 20px;
   border-radius: 8px;
 }
+
+/* Forms */
 form input, form textarea, form button {
   width: 100%;
   padding: 10px;
   margin-top: 5px;
+  font-family: inherit;
 }
 form button {
   background: #004080;
   color: #fff;
   border: none;
   cursor: pointer;
+  font-weight: 600;
 }
 form button:hover {
   background: #003366;
 }
+
+/* Footer */
 footer {
   background: #003366;
   color: #fff;
   text-align: center;
   padding: 15px;
   margin-top: 40px;
+  font-size: 0.9rem;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .hero {
+    height: 250px;
+  }
+  .hero-text h2 {
+    font-size: 1.5rem;
+  }
+  nav {
+    flex-direction: column;
+  }
+  nav a {
+    margin: 8px 0;
+  }
 }
