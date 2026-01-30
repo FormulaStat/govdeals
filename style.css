@@ -29,37 +29,41 @@ header p {
 }
 
 /* Navigation */
-/* Toggle button */
-.nav-toggle {
-  display: none;
-  position: absolute;
-  top: 20px;
-  right: 20px;
-  background: #ffcc00;
-  color: #004080;
-  border: none;
-  padding: 10px 15px;
-  font-size: 1rem;
-  cursor: pointer;
-  border-radius: 4px;
-  font-weight: 700;
-}
-
-/* Mobile styles */
+/* Mobile styles with animation */
 @media (max-width: 768px) {
-  header {
-    position: relative; /* allows absolute positioning inside */
-  }
   nav {
     flex-direction: column;
     align-items: flex-start;
-    display: none; /* hide links by default */
+    max-height: 0;              /* collapsed by default */
+    overflow: hidden;           /* hide links when collapsed */
+    transition: max-height 0.4s ease-out; /* smooth animation */
+    background: #003366;
+    width: 100%;
+  }
+  nav a {
+    display: block;
+    margin: 10px 20px;
+    color: #fff;
   }
   nav.open {
-    display: flex; /* show links when nav has .open */
+    max-height: 300px;          /* expand smoothly */
+    transition: max-height 0.4s ease-in;
   }
+
+  /* Toggle button styling */
   .nav-toggle {
-    display: block; /* show toggle button on mobile */
+    display: block;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: #ffcc00;
+    color: #004080;
+    border: none;
+    padding: 10px 15px;
+    font-size: 1rem;
+    cursor: pointer;
+    border-radius: 4px;
+    font-weight: 700;
   }
 }
 
