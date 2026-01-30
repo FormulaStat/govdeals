@@ -17,10 +17,18 @@ document.addEventListener("DOMContentLoaded", () => {
 
 // ====== Mobile Navigation Toggle ======
 document.addEventListener("DOMContentLoaded", () => {
-  const nav = document.querySelector("nav");
+  const nav = document.getElementById("mainNav");
   const toggleBtn = document.querySelector(".nav-toggle");
 
   toggleBtn.addEventListener("click", () => {
     nav.classList.toggle("open");
+  });
+
+  // Auto-close menu when a link is clicked
+  const navLinks = nav.querySelectorAll("a");
+  navLinks.forEach(link => {
+    link.addEventListener("click", () => {
+      nav.classList.remove("open");
+    });
   });
 });
