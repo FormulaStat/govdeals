@@ -5,6 +5,13 @@ document.addEventListener("DOMContentLoaded", () => {
   console.log("GovDeals Service homepage loaded successfully.");
 });
 
+// MOBILE NAV TOGGLE
+const menuToggle = document.getElementById("menuToggle");
+const navLinks = document.getElementById("navLinks");
+
+menuToggle.addEventListener("click", () => {
+  navLinks.classList.toggle("show");
+});
 
 const inventoryData = [
   {
