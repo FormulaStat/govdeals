@@ -23,7 +23,7 @@ const inventoryData = [
     price: 78000,
     title: "2023 Volvo VNL",
     condition: "Used • Certified Inspection",
-    image: "https://images.unsplash.com/photo-1611911813383-67769b37a149"
+    image: "https://unsplash.com/photos/red-volvo-vehicle-P-w61wkh-PQ"
   },
   {
     id: 3,
@@ -92,4 +92,23 @@ priceFilter.addEventListener("change", applyFilters);
 
 document.addEventListener("DOMContentLoaded", () => {
   renderInventory(inventoryData);
+});
+
+
+// CONTACT FORM HANDLING
+const contactForm = document.getElementById("contactForm");
+const formStatus = document.getElementById("formStatus");
+
+contactForm.addEventListener("submit", (e) => {
+  e.preventDefault();
+
+  formStatus.textContent = "Sending your inquiry...";
+  formStatus.style.color = "#2563eb";
+
+  setTimeout(() => {
+    formStatus.textContent =
+      "Thank you. Your inquiry has been received. Our team will contact you shortly.";
+    formStatus.style.color = "#16a34a";
+    contactForm.reset();
+  }, 1200);
 });
