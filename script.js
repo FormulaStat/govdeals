@@ -112,3 +112,6 @@ contactForm.addEventListener("submit", (e) => {
     contactForm.reset();
   }, 1200);
 });
+
+// FOOTER YEAR
+document.getElementById("year").textContent = new Date().getFullYear();
