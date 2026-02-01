@@ -3,57 +3,100 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>GovDeals Service | Inventory</title>
+  <title>GovDeals Service | Truck Inventory</title>
   <link rel="icon" type="image/png" href="/logo-gov.png">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
+
   <style>
+    /* BASIC STYLES */
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #f9fafb;
+      margin: 0;
+      padding-top: 70px;
+      scroll-behavior: smooth;
+      color: #111827;
+    }
+    h1 { text-align:center; font-size:36px; margin-bottom:20px; }
+    
+    /* FILTERS */
     .inventory-filters {
-  display: flex;
-  gap: 20px;
-  justify-content: center;
-  margin-bottom: 40px;
-  flex-wrap: wrap;
-}
+      display: flex;
+      gap: 20px;
+      justify-content: center;
+      margin-bottom: 40px;
+      flex-wrap: wrap;
+    }
+    .inventory-filters select {
+      padding: 10px 14px;
+      border-radius: 4px;
+      border: 1px solid #d1d5db;
+      font-size: 15px;
+    }
 
-.inventory-filters select {
-  padding: 10px 14px;
-  border-radius: 4px;
-  border: 1px solid #d1d5db;
-  font-size: 15px;
-}
-    /* Basic Inventory Page Styles */
-    body { font-family: 'Inter', sans-serif; margin:0; padding:70px 20px 50px; background:#f9fafb; scroll-behavior:smooth; }
-    h1 { text-align:center; font-size:36px; margin-bottom:20px; color:#111827; }
-    .inventory-container { max-width:1200px; margin:0 auto; display:grid; grid-template-columns:1fr; gap:40px; }
+    /* CONTAINER */
+    .inventory-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      gap: 40px;
+      padding: 0 20px;
+    }
 
-    .truck-card { background:#ffffff; border-radius:8px; overflow:hidden; box-shadow:0 10px 25px rgba(0,0,0,0.08); animation:fadeUp 0.5s ease forwards; }
-    .truck-info { padding:20px; }
-    .truck-info h2 { font-size:22px; margin-bottom:10px; color:#111827; }
+    /* TRUCK CARD */
+    .truck-card {
+      background: #ffffff;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+      animation: fadeUp 0.5s ease forwards;
+    }
+
+    .truck-info {
+      padding: 20px;
+    }
+    .truck-info h2 { font-size:22px; margin-bottom:10px; }
     .truck-info p { font-size:14px; margin-bottom:6px; color:#374151; }
     .truck-info .price { font-weight:700; font-size:18px; margin:10px 0; color:#2563eb; }
     .truck-info ul { list-style:none; padding-left:0; margin-bottom:10px; }
     .truck-info ul li { position:relative; padding-left:22px; margin-bottom:6px; }
     .truck-info ul li::before { content:'✔'; position:absolute; left:0; color:#16a34a; font-weight:bold; }
 
-    /* Image Slider */
+    .quote-btn {
+      display:inline-block;
+      margin-top:10px;
+      padding:10px 16px;
+      background:#2563eb;
+      color:white;
+      border-radius:4px;
+      text-decoration:none;
+      font-weight:600;
+    }
+
+    /* IMAGE SLIDER */
     .slider { position: relative; width:100%; height:250px; overflow:hidden; border-radius:6px; margin-bottom:15px; }
     .slides { display:flex; transition:0.5s ease-in-out; }
     .slides img { width:100%; flex-shrink:0; object-fit:cover; }
     .slider-buttons { position:absolute; top:50%; width:100%; display:flex; justify-content:space-between; transform:translateY(-50%); }
     .slider-buttons button { background:rgba(0,0,0,0.5); color:white; border:none; padding:8px 12px; border-radius:4px; cursor:pointer; }
 
-    /* Fade up animation */
+    /* ANIMATION */
     @keyframes fadeUp { from {transform:translateY(20px);opacity:0;} to {transform:translateY(0);opacity:1;} }
 
-    /* Responsive */
-    @media(max-width:768px){ .truck-info h2{font-size:20px;} .slider{height:180px;} }
+    /* RESPONSIVE */
+    @media(max-width:768px){
+      .truck-info h2{font-size:20px;}
+      .slider{height:180px;}
+    }
   </style>
 </head>
+
 <body>
 
 <h1>Truck Inventory</h1>
-<div class="inventory-container" id="inventoryContainer">
-  <!-- FILTERS -->
+
+<!-- FILTERS -->
 <div class="inventory-filters">
   <select id="categoryFilter">
     <option value="all">All Categories</option>
@@ -69,82 +112,12 @@
     <option value="high">Above $100,000</option>
   </select>
 </div>
-  <!-- Truck cards will be generated dynamically here -->
+
+<div class="inventory-container" id="inventoryContainer">
+  <!-- Truck cards will be generated dynamically -->
 </div>
 
 <script>
-  // FILTER FUNCTIONALITY
-const categoryFilter = document.getElementById("categoryFilter");
-const priceFilter = document.getElementById("priceFilter");
-
-function renderFilteredInventory() {
-  let filtered = [...trucks];
-
-  // Category filter
-  if(categoryFilter.value !== "all"){
-    filtered = filtered.filter(truck => truck.category === categoryFilter.value);
-  }
-
-  // Price filter
-  if(priceFilter.value !== "all"){
-    filtered = filtered.filter(truck => {
-      if(priceFilter.value === "low") return truck.price < 50000;
-      if(priceFilter.value === "mid") return truck.price >=50000 && truck.price <=100000;
-      if(priceFilter.value === "high") return truck.price > 100000;
-    });
-  }
-
-  // Clear container and re-render
-  container.innerHTML = "";
-  filtered.forEach((truck,index)=>{
-    const card = document.createElement("div");
-    card.className="truck-card";
-    card.style.animationDelay=`${index*0.1}s`;
-
-    card.innerHTML=`
-      <div class="slider">
-        <div class="slides">
-          ${truck.images.map(img=>`<img src="${img}" alt="${truck.title}">`).join('')}
-        </div>
-        <div class="slider-buttons">
-          <button class="prev">◀</button>
-          <button class="next">▶</button>
-        </div>
-      </div>
-      <div class="truck-info">
-        <h2>${truck.title}</h2>
-        <p class="price">$${truck.price.toLocaleString()}</p>
-        <p>${truck.description}</p>
-        <ul>${truck.specs.map(spec=>`<li>${spec}</li>`).join('')}</ul>
-        <a href="contact.html#contact" class="quote-btn" style="display:inline-block;margin-top:10px;padding:10px 16px;background:#2563eb;color:white;border-radius:4px;text-decoration:none;">Request a Quote</a>
-      </div>
-    `;
-    container.appendChild(card);
-
-    // Slider functionality per card
-    const slides = card.querySelector(".slides");
-    const images = slides.querySelectorAll("img");
-    const prev = card.querySelector(".prev");
-    const next = card.querySelector(".next");
-    let current = 0;
-
-    prev.addEventListener("click", ()=>{
-      current = (current-1+images.length)%images.length;
-      slides.style.transform=`translateX(-${current*100}%)`;
-    });
-    next.addEventListener("click", ()=>{
-      current = (current+1)%images.length;
-      slides.style.transform=`translateX(-${current*100}%)`;
-    });
-  });
-}
-
-// Event listeners for filters
-categoryFilter.addEventListener("change", renderFilteredInventory);
-priceFilter.addEventListener("change", renderFilteredInventory);
-
-// Initial render
-renderFilteredInventory();
 const trucks = [
   {
     title:"2020 Volvo VNL64T740",
@@ -169,19 +142,46 @@ const trucks = [
     specs:["Make & Model: Peterbilt 579","Year: 2019","Condition: New","Engine: PACCAR MX-13","Transmission: Automatic","Low Mileage","Features: Spacious sleeper cab"],
     description:"A dependable truck for long hauls or expanding your fleet.",
     images:["peterbilt1.jpg","peterbilt2.jpg","peterbilt3.jpg","peterbilt4.jpg"]
+  },
+  {
+    title:"2016 Volvo VNM64T Day Cab",
+    price:5250,
+    category:"Used",
+    specs:["VIN: 4V4MC9EH2GN952124","Engine: Volvo D13 12.8L Elec 455 hp (CORE LOCKED)","Transmission: Volvo I-Shift AT2612D 12-speed","Rear Axle: Meritor MT40-14X","GVW: 52,350 lbs","Odometer: 737,314 miles"],
+    description:"Whole or for parts. Engine core locked, alternator sold, no rear tires.",
+    images:["volvo_daycab1.jpg","volvo_daycab2.jpg","volvo_daycab3.jpg","volvo_daycab4.jpg"]
+  },
+  {
+    title:"2017 Box Truck",
+    price:18200,
+    category:"Used",
+    specs:["Mileage: 143,091 miles","GVW: 17,950 lbs","2WD Drivetrain","Diesel","Automatic Transmission","Condition: Used, Well-Maintained"],
+    description:"No CDL required. Perfect for business or personal use.",
+    images:["boxtruck1.jpg","boxtruck2.jpg","boxtruck3.jpg","boxtruck4.jpg"]
+  },
+  {
+    title:"2016 RAM 1500 Lone Star Fleet 4x4",
+    price:17995,
+    category:"Used",
+    specs:["Engine: 5.7L V8","Transmission: 8-speed Automatic","Crew Cab","4X4 Drivetrain","Well-maintained","Sleek gray exterior with black interior"],
+    description:"Ready to tackle any job or adventure.",
+    images:["ram15001.jpg","ram15002.jpg","ram15003.jpg","ram15004.jpg"]
   }
-  // Add remaining trucks here similarly
 ];
 
-// Generate truck cards
+// SELECTORS
 const container = document.getElementById("inventoryContainer");
+const categoryFilter = document.getElementById("categoryFilter");
+const priceFilter = document.getElementById("priceFilter");
 
-trucks.forEach((truck,index)=>{
+// CREATE TRUCK CARDS ONCE
+const truckCards = trucks.map((truck,index)=>{
   const card = document.createElement("div");
   card.className="truck-card";
-  card.style.animationDelay=`${index*0.1}s`;
+  card.dataset.category = truck.category;
+  card.dataset.price = truck.price;
 
-  card.innerHTML=`
+  card.innerHTML = `
     <div class="slider">
       <div class="slides">
         ${truck.images.map(img=>`<img src="${img}" alt="${truck.title}">`).join('')}
@@ -196,14 +196,11 @@ trucks.forEach((truck,index)=>{
       <p class="price">$${truck.price.toLocaleString()}</p>
       <p>${truck.description}</p>
       <ul>${truck.specs.map(spec=>`<li>${spec}</li>`).join('')}</ul>
-      <a href="contact.html#contact" class="quote-btn" style="display:inline-block;margin-top:10px;padding:10px 16px;background:#2563eb;color:white;border-radius:4px;text-decoration:none;">Request a Quote</a>
+      <a href="contact.html#contact" class="quote-btn">Request a Quote</a>
     </div>
   `;
-  container.appendChild(card);
-});
 
-// Slider functionality
-document.querySelectorAll(".truck-card").forEach(card=>{
+  // Slider functionality
   const slides = card.querySelector(".slides");
   const images = slides.querySelectorAll("img");
   const prev = card.querySelector(".prev");
@@ -212,13 +209,55 @@ document.querySelectorAll(".truck-card").forEach(card=>{
 
   prev.addEventListener("click", ()=>{
     current = (current-1+images.length)%images.length;
-    slides.style.transform=`translateX(-${current*100}%)`;
+    slides.style.transform = `translateX(-${current*100}%)`;
   });
   next.addEventListener("click", ()=>{
     current = (current+1)%images.length;
-    slides.style.transform=`translateX(-${current*100}%)`;
+    slides.style.transform = `translateX(-${current*100}%)`;
   });
+
+  container.appendChild(card);
+  return card;
 });
+
+// FILTER FUNCTION
+function renderFilteredInventory() {
+  const catValue = categoryFilter.value;
+  const priceValue = priceFilter.value;
+
+  truckCards.forEach(card=>{
+    const cardPrice = parseInt(card.dataset.price,10);
+    const cardCategory = card.dataset.category;
+
+    let show = true;
+
+    // Category filter
+    if(catValue!=="all" && cardCategory!==catValue) show=false;
+
+    // Price filter
+    if(priceValue!=="all"){
+      if(priceValue==="low" && cardPrice>=50000) show=false;
+      if(priceValue==="mid" && (cardPrice<50000 || cardPrice>100000)) show=false;
+      if(priceValue==="high" && cardPrice<=100000) show=false;
+    }
+
+    // Animate display
+    if(show){
+      card.style.display="block";
+      card.style.opacity=0;
+      setTimeout(()=>{card.style.opacity=1; card.style.transition="opacity 0.4s";},10);
+    } else {
+      card.style.display="none";
+    }
+  });
+}
+
+// Event listeners
+categoryFilter.addEventListener("change", renderFilteredInventory);
+priceFilter.addEventListener("change", renderFilteredInventory);
+
+// Initial render
+renderFilteredInventory();
 </script>
 
 </body>
