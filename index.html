@@ -114,6 +114,50 @@
     </div>
   </section>
 
+  <!-- INVENTORY SECTION -->
+<section class="inventory" id="inventory">
+  <div class="inventory-container">
+
+    <div class="section-header">
+      <h2>Truck Inventory</h2>
+      <p>
+        Browse our selection of new, used, and rental trucks. Filter by category,
+        model year, and price range to find the right vehicle for your needs.
+      </p>
+    </div>
+
+    <!-- FILTERS -->
+    <div class="inventory-filters">
+      <select id="categoryFilter">
+        <option value="all">All Categories</option>
+        <option value="new">New Trucks</option>
+        <option value="used">Used Trucks</option>
+        <option value="rental">Rental Trucks</option>
+      </select>
+
+      <select id="yearFilter">
+        <option value="all">All Years</option>
+        <option value="2024">2024</option>
+        <option value="2023">2023</option>
+        <option value="2022">2022</option>
+      </select>
+
+      <select id="priceFilter">
+        <option value="all">All Prices</option>
+        <option value="low">Below $50,000</option>
+        <option value="mid">$50,000 – $100,000</option>
+        <option value="high">Above $100,000</option>
+      </select>
+    </div>
+
+    <!-- INVENTORY GRID -->
+    <div class="inventory-grid" id="inventoryGrid">
+      <!-- Dynamic cards injected by JS -->
+    </div>
+
+  </div>
+</section>
+
   <!-- JS -->
   <script src="script.js"></script>
 </body>
