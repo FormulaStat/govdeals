@@ -176,6 +176,16 @@
 <div class="inventory-container" id="inventoryContainer"></div>
 
 <script>
+
+  // MOBILE NAV TOGGLE
+const menuToggle = document.getElementById("menuToggle");
+const navLinks = document.getElementById("navLinks");
+
+menuToggle.addEventListener("click", () => {
+  navLinks.classList.toggle("show");
+});
+
+  
 const trucks = [
   {
     title:"2020 Volvo VNL64T740",
