@@ -111,6 +111,16 @@ body {
   color: #0a66c2; /* or your brand color */
 }
 
+@media (max-width: 600px) {
+  .logo-text {
+    font-size: 1.1rem;
+  }
+
+  .logo img {
+    height: 32px;
+  }
+}
+
 /* HERO SECTION */
 .hero {
   position: relative;
