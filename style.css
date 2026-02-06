@@ -86,6 +86,31 @@ body {
   }
 }
 
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+}
+
+.logo-text {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: #111;
+  white-space: nowrap;
+}
+
+.logo img {
+  height: 40px;
+  width: auto;
+  display: block;
+}
+
+/* Optional hover polish */
+.logo:hover .logo-text {
+  color: #0a66c2; /* or your brand color */
+}
+
 /* HERO SECTION */
 .hero {
   position: relative;
