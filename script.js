@@ -21,7 +21,7 @@ const inventoryData = [
     price: 120000,
     title: "2024 Freightliner Cascadia",
     condition: "Brand New • Fully Inspected",
-    image: "https://images.unsplash.com/photo-1617814065893-dc6c7db03dcb"
+    image: "images/freightliner2024.jpg"
   },
   {
     id: 2,
