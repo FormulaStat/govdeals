@@ -30,7 +30,7 @@ const inventoryData = [
     price: 78000,
     title: "2023 Volvo VNL",
     condition: "Used • Certified Inspection",
-    image: "https://unsplash.com/photos/red-volvo-vehicle-P-w61wkh-PQ"
+    image: "images/volvo2023.jpg"
   },
   {
     id: 3,
