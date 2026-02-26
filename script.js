@@ -39,7 +39,7 @@ const inventoryData = [
     price: 45000,
     title: "2022 Kenworth T680",
     condition: "Rental • Maintained Fleet",
-    image: "https://images.unsplash.com/photo-1601584115197-04ecc0da31d7"
+    image: "images/kenworth2022.jpg"
   }
 ];
 
